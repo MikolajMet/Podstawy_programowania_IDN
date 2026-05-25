@@ -23,9 +23,27 @@ Ten projekt to zbiór skryptów powłoki i narzędzi wiersza poleceń przeznaczo
 * **Przetwarzanie Obrazów**: `sips`
 * **Zarządzanie Archiwami**: `zip`, `unzip`
 
-## Jak Uruchomić (macOS / Linux)
+## Jak Uruchomić 
 
 1. Sklonuj repozytorium:
    ```bash
-   git clone [[https://github.com/twoj-link-tutaj.git](https://github.com/twoj-link-tutaj.git)]
+   git clone [[https://github.com/MikolajMet/Podstawy_programowania_IDN](https://github.com/MikolajMet/Podstawy_programowania_IDN)]
    cd [nazwa-katalogu]
+   ```
+
+2. Instalacja dodatków MacOS
+   ```bash
+   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+   brew install imagemagick dos2unix diffutils
+   ```
+   Gdyby nie działało
+   ```bash
+   export PATH="/opt/homebrew/bin:/usr/local/bin:$PATH"
+   brew install imagemagick dos2unix diffutils
+   ```
+
+3. Niesforne dane
+   ```bash
+
+   ```
+
