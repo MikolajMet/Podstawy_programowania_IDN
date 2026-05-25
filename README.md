@@ -90,7 +90,9 @@ Ten projekt to zbiór skryptów powłoki i narzędzi wiersza poleceń przeznaczo
 
 9. Porządki w  kopiach zapsowych:
     ```bash
-
+    mkdir -p uporzadkowane
+    for plik in kopie-1/*.zip kopie-2/*.zip; do if [ -f "$plik" ]; then nazwa=$(basename "$plik"); rok=${nazwa:0:4}; miesiac=${nazwa:5:2}; mkdir -p "uporzadkowane/$rok/$miesiac"; mv "$plik" "uporzadkowane/$rok/$miesiac/"; fi; done
+    rm -rf kopie-1 kopie-2
     ```
 
 10. Galeria dla grafika:
