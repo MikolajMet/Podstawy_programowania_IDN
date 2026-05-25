@@ -12,7 +12,7 @@ Ten projekt to zbiór skryptów powłoki i narzędzi wiersza poleceń przeznaczo
 5. **Zadanie 5 (Z SQL do CSV i z powrotem)**: Zadanie składa się z dwóch etapów. Pierwszy polega na odczytaniu danych z pliku `steps-2sql.csv` i wygenerowaniu na ich podstawie zapytań do bazy danych (`INSERT INTO`). Drugi etap to operacja w odwrotną stronę – skrypt odczytuje gotowy plik `steps-2csv.sql`, wyciąga z niego z powrotem same wartości liczbowe do formatu CSV i przy okazji skraca stemple czasu (zamienia milisekundy na sekundy) przy użyciu narzędzia `sed`. 
 6. **Zadanie 6 (Marudny tłumacz)** Wykorzystuje narzędzia `sed` oraz `grep` do zautomatyzowanego formatowania plików tłumaczeń w formacie JSON5. Skrypt dubluje i komentuje istniejące linie z kluczami, a także porównuje pliki i odfiltrowuje nowe frazy z nowszej wersji oprogramowania, tworząc gotowe do pracy szablony dla tłumacza.
 7. **Zadanie 7 (Fotografik Gamoń)**: Wykorzystuje pętlę połączoną z natywnym dla macOS narzędziem `sips` do masowej konwersji wyodrębnionych zdjęć z plików `kopie-1` i `kopie-2` na format `.jpg`. Zmienia rozdzielczość na 96x96 DPI, skaluje wysokość do 720px i kompresuje ostateczny wynik do archiwum ZIP.
-8. 
+8. **Zadanie 8 (Wszędzie te PDF-y):** Wykorzystuje skrypt napisany w języku Python (z użyciem biblioteki `fpdf2`) do zautomatyzowanego wygenerowania dokumentu PDF. Skrypt zaczytuje z folderu wszystkie gotowe zdjęcia `.jpg`, dzieli je na porcje po 8 sztuk i układa na stronach formatu A4 w idealnej siatce (2 kolumny, 4 wiersze). Zabezpiecza proporcje obrazów, centralnie wyrównuje ich podpisy oraz wyłącza domyślne marginesy stron.
 9. **Zadanie 9 (Porządki w kopiach zapasowych)**: Rozwiązuje problem bałaganu z plikami ZIP wrzuconymi zbiorczo do folderów `kopie-1` i `kopie-2`. Skrypt analizuje nazwę każdego pliku (zapisaną w formacie RRRR-MM-DD.zip), wycina z niej konkretny rok i miesiąc, po czym automatycznie tworzy odpowiednie podkatalogi (w formacie `Rok/Miesiąc/`) i segreguje tam poszczególne archiwa.
 10. 
 
@@ -97,7 +97,35 @@ Ten projekt to zbiór skryptów powłoki i narzędzi wiersza poleceń przeznaczo
 
 8. Wszędzie te PDF-y:
    ```bash
+   # Krok 1: Instalacja niezbędnej biblioteki w terminalu
+   pip install fpdf2
+   # Krok 2: skrypt w języku python
+   from fpdf import FPDF
+   import glob
+   import os
 
+   zdjecia = sorted(glob.glob("*.jpg"))
+
+   pdf = FPDF(format='A4')
+   pdf.set_auto_page_break(auto=False, margin=0)
+   pdf.set_font("helvetica", size=9)
+
+   for i, plik in enumerate(zdjecia):
+       if i % 8 == 0:
+           pdf.add_page()
+    
+       pozycja = i % 8
+
+       x = 20 + (pozycja % 2) * 95
+       y = 15 + (pozycja // 2) * 68
+
+       pdf.image(plik, x=x, y=y, w=80, h=55, keep_aspect_ratio=True)
+
+       pdf.set_xy(x, y + 56)
+       pdf.cell(80, 5, txt=os.path.basename(plik), align="C")
+
+   pdf.output("portfolio.pdf")
+   print("PDF został wygenerowany jako 'portfolio.pdf'")
    ```
 
 9. Porządki w  kopiach zapsowych:
