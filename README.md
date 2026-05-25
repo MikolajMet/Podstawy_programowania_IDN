@@ -27,8 +27,8 @@ Ten projekt to zbiór skryptów powłoki i narzędzi wiersza poleceń przeznaczo
 
 1. Sklonuj repozytorium:
    ```bash
-   git clone [[https://github.com/MikolajMet/Podstawy_programowania_IDN](https://github.com/MikolajMet/Podstawy_programowania_IDN)]
-   cd [nazwa-katalogu]
+   git clone https://github.com/MikolajMet/Podstawy_programowania_IDN
+   cd Podstawy_programowania_IDN
    ```
 
 2. Instalacja dodatków MacOS:
