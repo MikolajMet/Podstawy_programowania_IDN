@@ -5,6 +5,7 @@
 Ten projekt to zbiór skryptów powłoki i narzędzi wiersza poleceń przeznaczonych do automatyzacji ekstrakcji tekstu, masowej konwersji obrazów oraz organizacji systemu plików. Prezentuje umiejętność przetwarzania strumieni danych, manipulacji metadanymi i strukturyzacji katalogów natywnie w środowisku UNIX/macOS, bez konieczności korzystania z zewnętrznych aplikacji graficznych.
 
 ## Architektura i Przebieg Zadań
+Zadania podane pod adresem: `https://staff.tu.kielce.pl/sk/media/downloads/pp/pp-projekt-zadania.pdf`
 1. **Zadanie 1 (Zespoły i narzędzia)**: Grupa: `Mikołaj Met` , `Dawid Basąg` Repozytoria github: ` https://github.com/MikolajMet` , ` https://github.com/Ponczek6969`
 2. **Zadanie 2 (Instalacja dodatków)**: Instalacja brakujących pakietów (MacOS) potrzebnych do wykonania zadań. 
 3. **Zadanie 3 (Niesforne dane)**: Tworzy plik nadający się do importu do arkusza kalkulacyjnego z podziałem na kolumny.
