@@ -8,7 +8,7 @@ Ten projekt to zbiór skryptów powłoki i narzędzi wiersza poleceń przeznaczo
 1. **Zadanie 1 (Zespoły i narzędzia)**: Grupa: `Mikołaj Met` , `Dawid Basąg` Repozytoria github: ` https://github.com/MikolajMet` , ` https://github.com/Ponczek6969`
 2. **Zadanie 2 (Instalacja dodatków)**: Instalacja brakujących pakietów (MacOS) potrzebnych do wykonania zadań. 
 3. **Zadanie 3 (Niesforne dane)**: Na podstawie danych z pliku `dane.txt` tworzy nowy plik nadający się do importu do arkusza kalkulacyjnego z podziałem na kolumny.
-4. **Zadanie 4 (Dodawanie poprawek)**: 
+4. **Zadanie 4 (Dodawanie poprawek)**: Wykorzystuje narzędzie `diff` do wygenerowania łatki (`latka.patch`) z różnicami między plikami, a następnie nakłada ją na oryginalną listę przy użyciu polecenia `patch`. Poprawność operacji i zgodność plików jest na koniec weryfikowana poprzez porównanie ich sum kontrolnych za pomocą `md5sum`.
 5. **Zadanie 5 (Z SQL do CSV i z powrotem)**: Zadanie składa się z dwóch etapów. Pierwszy polega na odczytaniu danych z pliku `steps-2sql.csv` i wygenerowaniu na ich podstawie zapytań do bazy danych (`INSERT INTO`). Drugi etap to operacja w odwrotną stronę – skrypt odczytuje gotowy plik `steps-2csv.sql`, wyciąga z niego z powrotem same wartości liczbowe do formatu CSV i przy okazji skraca stemple czasu (zamienia milisekundy na sekundy) przy użyciu narzędzia `sed`. 
 6. 
 7. **Zadanie 7 (Fotografik Gamoń)**: Wykorzystuje pętlę połączoną z natywnym dla macOS narzędziem `sips` do masowej konwersji wyodrębnionych zdjęć z plików `kopie-1` i `kopie-2` na format `.jpg`. Zmienia rozdzielczość na 96x96 DPI, skaluje wysokość do 720px i kompresuje ostateczny wynik do archiwum ZIP.
@@ -50,7 +50,10 @@ Ten projekt to zbiór skryptów powłoki i narzędzi wiersza poleceń przeznaczo
 
 4. Dodawanie poprawek:
    ```bash
-   
+      diff -u lista.txt lista-pop.txt > latka.patch
+      patch lista.txt < latka.patch
+      md5sum lista.txt
+      md5sum lista-pop.txt
    ```
 
 5. Z CVS do SQL i z powrotem:
