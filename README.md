@@ -42,8 +42,44 @@ Ten projekt to zbiór skryptów powłoki i narzędzi wiersza poleceń przeznaczo
    brew install imagemagick dos2unix diffutils
    ```
 
-3. Niesforne dane
+3. Niesforne dane (MacOS)
+   ```bash
+   dos2unix dane.txt
+   (printf "x\ny\nz\n"; cat dane.txt) | paste - - - | column -t > dane_wynik.txt
+   ```
+
+4. Dodawanie poprawek
+   ```bash
+   
+   ```
+
+5. Z CVS do SQL i z powrotem
    ```bash
 
    ```
+
+6. Mrudny tłumacz
+   ```bash
+
+   ```
+
+7. Fotografik gamoń
+   ```bash
+
+   ```
+
+8. Wszędzie te PDF-y
+   ```bash
+
+   ```
+
+9. Porządki w  kopiach zapsowych
+    ```bash
+
+    ```
+
+10. Galeria dla grafika
+    ```bash
+
+    ```
 
