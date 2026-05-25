@@ -31,54 +31,62 @@ Ten projekt to zbiór skryptów powłoki i narzędzi wiersza poleceń przeznaczo
    cd [nazwa-katalogu]
    ```
 
-2. Instalacja dodatków MacOS
+2. Instalacja dodatków MacOS:
    ```bash
    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
    brew install imagemagick dos2unix diffutils
    ```
-   Gdyby nie działało
+   Gdyby nie działało:
    ```bash
    export PATH="/opt/homebrew/bin:/usr/local/bin:$PATH"
    brew install imagemagick dos2unix diffutils
    ```
 
-3. Niesforne dane (MacOS)
+3. Niesforne dane:
    ```bash
    dos2unix dane.txt
    (printf "x\ny\nz\n"; cat dane.txt) | paste - - - | column -t > dane_wynik.txt
    ```
 
-4. Dodawanie poprawek
+4. Dodawanie poprawek:
    ```bash
    
    ```
 
-5. Z CVS do SQL i z powrotem
+5. Z CVS do SQL i z powrotem:
+   ```bash
+   #Krok1 CSV na SQL
+   cd csv
+   dos2unix steps-2sql.csv
+   awk -F';' 'NR>1 {printf "INSERT INTO stepsData (time, intensity, steps) VALUES (%s, %s, %s);\n", $1, $2, $3}' steps-2sql.csv > gotowy_sql.sql
+
+   #Krok2 SQL na CSV
+   dos2unix steps-2csv.sql
+   echo "dateTime; steps; synced" > kroki.csv
+   sed -E -n 's/.*VALUES \(([0-9]+)000, *([0-9]+), *([0-9]+)\);/\1;\2;\3/p' steps-2csv.sql >> kroki.csv
+   ```
+
+6. Mrudny tłumacz:
    ```bash
 
    ```
 
-6. Mrudny tłumacz
+7. Fotografik gamoń:
    ```bash
 
    ```
 
-7. Fotografik gamoń
+8. Wszędzie te PDF-y:
    ```bash
 
    ```
 
-8. Wszędzie te PDF-y
-   ```bash
-
-   ```
-
-9. Porządki w  kopiach zapsowych
+9. Porządki w  kopiach zapsowych:
     ```bash
 
     ```
 
-10. Galeria dla grafika
+10. Galeria dla grafika:
     ```bash
 
     ```
