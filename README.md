@@ -73,7 +73,14 @@ Ten projekt to zbiór skryptów powłoki i narzędzi wiersza poleceń przeznaczo
 
 7. Fotografik gamoń:
    ```bash
-
+   mkdir niesk
+   for plik in kopie-1/*.zip kopie-2/*.zip; do unzip -j "$plik" -d niesk; done
+   cd niesk
+   mkdir -p GotoweZdjecia
+   for plik in *.*; do if [ -f "$plik" ]; then sips -s format jpeg -s dpiWidth 96.0 -s dpiHeight 96.0 --resampleHeight 720 "$plik" --out "GotoweZdjecia/${plik%.*}.jpg" 2>/dev/null; fi; done
+   cd GotoweZdjecia
+   rm *.png *.PNG *.gif *.GIF 2>/dev/null
+   zip -r ../Zadanie7_Fotografik_Gotowe.zip *
    ```
 
 8. Wszędzie te PDF-y:
