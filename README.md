@@ -17,11 +17,13 @@ Ten projekt to zbiór skryptów powłoki i narzędzi wiersza poleceń przeznaczo
 10. 
 
 ## Technologie
-* **Środowisko**: macOS / UNIX CLI
-* **Język**: Bash
-* **Przetwarzanie Tekstu**: `sed`, `dos2unix`
-* **Przetwarzanie Obrazów**: `sips`
-* **Zarządzanie Archiwami**: `zip`, `unzip`
+* **Środowisko operacyjne**: macOS, Windows 
+* **Języki skryptowe i programowania**: Bash, Python 3
+* **Zarządzanie wersjami i pakietami**: Git, GitHub, Homebrew 
+* **Przetwarzanie strumieni i tekstu**: `awk`, `sed`, `grep`, `dos2unix`, `paste`, `column`
+* **Porównywanie i weryfikacja plików**: `diff`, `patch`, `md5sum`
+* **Przetwarzanie obrazów i dokumentów**: `sips`, `ImageMagick`, `fpdf2`
+* **Zarządzanie archiwami i plikami**: `zip`
 
 ## Jak Uruchomić 
 
@@ -62,12 +64,18 @@ Ten projekt to zbiór skryptów powłoki i narzędzi wiersza poleceń przeznaczo
 5. Z CVS do SQL i z powrotem:
    ```bash
    #Krok1 CSV na SQL
+   
    cd csv
+   #Konwersja danych do formatu MacOS:
    dos2unix steps-2sql.csv
+   #Przygotowanie danych do importu do bazy danych SQL
    awk -F';' 'NR>1 {printf "INSERT INTO stepsData (time, intensity, steps) VALUES (%s, %s, %s);\n", $1, $2, $3}' steps-2sql.csv > gotowy_sql.sql
 
    #Krok2 SQL na CSV
+
+   #Konwersja danych do formatu MacOS:
    dos2unix steps-2csv.sql
+   #Konwersja SQL na CSV ze zmianą stempla czasu (z milisekund na sekundy)
    echo "dateTime; steps; synced" > kroki.csv
    sed -E -n 's/.*VALUES \(([0-9]+)000, *([0-9]+), *([0-9]+)\);/\1;\2;\3/p' steps-2csv.sql >> kroki.csv
    ```
