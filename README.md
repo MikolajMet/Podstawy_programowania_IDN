@@ -44,7 +44,9 @@ Ten projekt to zbiór skryptów powłoki i narzędzi wiersza poleceń przeznaczo
 
 3. Niesforne dane:
    ```bash
+   #Konwersja danych do formatu MacOS:
    dos2unix dane.txt
+   #Podzielenie danych na 3 kolumny z nagłówkami:
    (printf "x\ny\nz\n"; cat dane.txt) | paste - - - | column -t > dane_wynik.txt
    ```
 
@@ -85,13 +87,16 @@ Ten projekt to zbiór skryptów powłoki i narzędzi wiersza poleceń przeznaczo
 
 7. Fotografik gamoń:
    ```bash
+   #Stworzenie nowego folderu do wypakowania plików:
    mkdir niesk
    for plik in kopie-1/*.zip kopie-2/*.zip; do unzip -j "$plik" -d niesk; done
-   cd niesk
+   #Stworzenie finalnego folderu z plikami ze zmienionym formatem i rozdzielczością:
    mkdir -p GotoweZdjecia
    for plik in *.*; do if [ -f "$plik" ]; then sips -s format jpeg -s dpiWidth 96.0 -s dpiHeight 96.0 --resampleHeight 720 "$plik" --out "GotoweZdjecia/${plik%.*}.jpg" 2>/dev/null; fi; done
+   #Usunięcie plików z niechcianym formatem:
    cd GotoweZdjecia
    rm *.png *.PNG *.gif *.GIF 2>/dev/null
+   #Spakowanie do archiwum
    zip -r ../Zadanie7_Fotografik_Gotowe.zip *
    ```
 
@@ -130,8 +135,11 @@ Ten projekt to zbiór skryptów powłoki i narzędzi wiersza poleceń przeznaczo
 
 9. Porządki w  kopiach zapsowych:
     ```bash
+    #Stworzenie nowego folderu
     mkdir -p uporzadkowane
+    #Porządkowanie plików z podziałem rok/miesiąc
     for plik in kopie-1/*.zip kopie-2/*.zip; do if [ -f "$plik" ]; then nazwa=$(basename "$plik"); rok=${nazwa:0:4}; miesiac=${nazwa:5:2}; mkdir -p "uporzadkowane/$rok/$miesiac"; mv "$plik" "uporzadkowane/$rok/$miesiac/"; fi; done
+    #Usunięcie starych plików
     rm -rf kopie-1 kopie-2
     ```
 
