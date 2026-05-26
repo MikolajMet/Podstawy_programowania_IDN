@@ -35,13 +35,11 @@ Ten projekt to zbiór skryptów powłoki i narzędzi wiersza poleceń przeznaczo
    ```bash
    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
    brew install imagemagick dos2unix diffutils
-   ```
-   Gdyby nie działało:
-   ```bash
+   #Gdyby nie zadziałało
    export PATH="/opt/homebrew/bin:/usr/local/bin:$PATH"
    brew install imagemagick dos2unix diffutils
    ```
-
+   
 3. Niesforne dane:
    ```bash
    #Konwersja danych do formatu MacOS:
